@@ -61,7 +61,7 @@ export default function Content() {
                     src={url}
                     alt='MemeImage' 
                 />
-                <p>Abdul Wahid Husaini</p>
+                <p>Abdul Wahid Husaini loves the Mohammad Waris Fayiz</p>
                 <h1 className='topText'>{text.topText}</h1>
                 <h1 className='buttomText'>{text.buttomText}</h1>
             </div>
