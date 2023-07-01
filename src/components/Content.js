@@ -1,29 +1,33 @@
 import React from 'react';
 
 export default function Content() {
+
     const [meme, setMeme] = React.useState({})
     let [url, setUrl] = React.useState('https://i.imgflip.com/grr.jpg')
-    console.log(url)
 
     React.useEffect(function(){
         fetch('https://api.imgflip.com/get_memes')
         .then(x => x.json())
         .then(x => setMeme(x.data.memes))
-    }, [url]
-    )
+    }, [url])
+
     function getMemeImage(){
         const randomeNumber = Math.floor(Math.random() * meme.length)
         setUrl(x => meme[randomeNumber].url)
     }
+
     const [text, setText] = React.useState({
         topText: '',
         buttomText: ''
     })
+
     function setTexts(event){
         event.preventDefault()
         setText(x => ({...x, [event.target.name]: event.target.value}))
     }
+
     return(
+
         <div className='content'>
             <div className='content--buttons'>
                 <input
@@ -34,6 +38,7 @@ export default function Content() {
                     placeholder='Top text' 
                     onChange={setTexts}
                 />
+
                 <input
                     className='br'
                     type='text'
@@ -49,12 +54,14 @@ export default function Content() {
                     onClick={getMemeImage}
                 />
             </div>
+
             <div className='content--memeImage'>
                 <img
                     className='content--memeImage--image'
                     src={url}
                     alt='MemeImage' 
                 />
+                <p>Abdul Wahid Husaini</p>
                 <h1 className='topText'>{text.topText}</h1>
                 <h1 className='buttomText'>{text.buttomText}</h1>
             </div>
